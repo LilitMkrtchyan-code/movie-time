@@ -1,0 +1,27 @@
+.footer-section {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: transparent;
+  color: #fff;
+  font-size: 14px;
+  border-top: 2px solid #323039;
+  padding: 20px 0px 40px;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 575px) {
+  .footer-content {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer-section {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,30 @@
+.header-section {
+  background-color: transparent;
+  padding: 15px 0px;
+  /* border-bottom: 2px solid #323039; */
+}
+
+.header-section__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.highlight {
+  color: #26a69a;
+  font-size: 35px;
+}
+
+.header-section__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
