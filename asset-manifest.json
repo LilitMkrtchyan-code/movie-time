@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/movie-time/static/css/main.d2771ed6.css",
+    "main.js": "/movie-time/static/js/main.6db9a797.js",
+    "static/media/telegram.png": "/movie-time/static/media/telegram.f677c7c22e582799a8cb.png",
+    "index.html": "/movie-time/index.html",
+    "main.d2771ed6.css.map": "/movie-time/static/css/main.d2771ed6.css.map",
+    "main.6db9a797.js.map": "/movie-time/static/js/main.6db9a797.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2771ed6.css",
+    "static/js/main.6db9a797.js"
+  ]
+}
