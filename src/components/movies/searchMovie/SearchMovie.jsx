@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./SearchMovie.css";
 
 export const SearchMovie = ({ searchMovies }) => {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    searchInputRef.current.focus();
+  }, []);
 
   function handleKey(event) {
     if (event.key === "Enter") {
@@ -29,6 +34,7 @@ export const SearchMovie = ({ searchMovies }) => {
       <div className="col s12">
         <div className="input-field">
           <input
+            ref={searchInputRef}
             className="validate"
             value={search}
             type="search"
@@ -41,7 +47,7 @@ export const SearchMovie = ({ searchMovies }) => {
           </button>
         </div>
         <div>
-          <label>
+          <label className="search-movie__label">
             <input
               className="with-gap"
               name="type"
@@ -52,7 +58,7 @@ export const SearchMovie = ({ searchMovies }) => {
             />
             <span>All</span>
           </label>
-          <label>
+          <label className="search-movie__label">
             <input
               className="with-gap"
               name="type"
@@ -63,7 +69,7 @@ export const SearchMovie = ({ searchMovies }) => {
             />
             <span>Movies</span>
           </label>
-          <label>
+          <label className="search-movie__label">
             <input
               className="with-gap"
               name="type"

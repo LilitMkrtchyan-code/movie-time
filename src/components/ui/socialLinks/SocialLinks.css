@@ -2,29 +2,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .social-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d9d7e0;;
+  background-color: #2f2942;
+  border: 1px solid #2f2942;
+  color: #fff;
   padding: 5px;
-  border-radius: 4px;
-  width: 38px;
-  height: 38px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   transition: 0.2s ease-in-out;
 }
 
 .social-icon:hover {
-  background-color: #26a69a;
+  background-color: #463f5f;
+  border: 1px solid #463f5f;
 }
 
-.x-icon,
-.telegram-icon,
-.vk-icon,
-.linkedin-icon {
-  width: 22px;
-  height: 22px;
+.icon {
+  font-size: 16px;
+  color: #fff;
 }

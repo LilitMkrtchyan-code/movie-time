@@ -1,0 +1,10 @@
+.but {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   color: #7f7e84;
+   padding: 9px 12px;
+   background-color: #2f2942;
+   border: 1px solid #2f2942;
+   border-radius: 12px;
+   transition: 0.2s ease-in-out;
+}

@@ -1,0 +1,71 @@
+.header-section {
+  background-color: transparent;
+  padding: 15px 0px;
+  border-bottom: 1px solid #323039;
+}
+
+.header-section__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-section__login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px 9px 12px;
+}
+
+.header-section__login:hover {
+  background-color: #3d3653;
+  border: 1px solid #3d3653;
+}
+
+.login-text {
+  color: #fff;
+  margin-top: 2px;
+}
+
+.fa-user {
+  font-size: 18px;
+}
+
+.highlight {
+  color: #2bbbad;
+  font-size: 35px;
+}
+
+.header-section__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-link {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #c8c8cb;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #fff;
+}

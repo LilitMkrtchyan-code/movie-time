@@ -1,4 +1,4 @@
-import { SocialLinks } from "../ui/socialLinks/SocialLinks";
+import { SocialLinks } from "../../components/ui/socialLinks/SocialLinks";
 import "./Footer.css";
 
 export const Footer = () => {

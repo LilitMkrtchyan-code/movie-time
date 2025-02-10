@@ -20,6 +20,10 @@
   color: #d9d7e0 !important;
 }
 
-label:not(:last-child) {
+.search-movie__label {
+  color: #ffffff7A;
+}
+
+.search-movie__label:not(:last-child) {
   margin-right: 20px;
 }

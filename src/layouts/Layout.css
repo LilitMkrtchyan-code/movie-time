@@ -1,0 +1,14 @@
+.layout-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main {
+  padding: 15px 0 80px;
+}
