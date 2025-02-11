@@ -35,7 +35,9 @@ export const AboutMovie = () => {
     <section className="about-movie">
       <div className="about-movie__header">
         <div>
-          <h3 className="about-movie__title">{movie.Title}</h3>
+          <h3 className="about-movie__title">
+            {movie.Title}
+          </h3>
         </div>
         <Rating rating={movie.imdbRating} />
       </div>
@@ -48,10 +50,41 @@ export const AboutMovie = () => {
           />
         </div>
         <div className="about-movie__details">
-          <ul>
-            <li>
-              <span></span>
+          <ul className="about-movie__details-list">
+            <li className="about-movie__detail-item">
+              <span>Year: </span>
+              {movie.Year}
             </li>
+            <li className="about-movie__detail-item">
+              <span>Country: </span>
+              {movie.Country}
+            </li>
+
+            <li className="about-movie__detail-item">
+              <span>Runtime: </span>
+              {movie.Runtime}
+            </li>
+            <li className="about-movie__detail-item">
+              <span>Genre: </span>
+              {movie.Genre}
+            </li>
+            <li className="about-movie__detail-item">
+              <span>Released: </span>
+              {movie.Released}
+            </li>
+            <li className="about-movie__detail-item">
+              <span>Director: </span>
+              {movie.Director}
+            </li>
+            <li className="about-movie__detail-item">
+              <span>Writer: </span>
+              {movie.Writer}
+            </li>
+            <li className="about-movie__detail-item">
+              <span>Actors: </span>
+              {movie.Actors}
+            </li>
+            <li className="about-movie__detail-item">{movie.Plot}</li>
           </ul>
         </div>
       </div>

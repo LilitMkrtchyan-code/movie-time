@@ -1,14 +1,14 @@
 .pagination-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  border-radius: 12px;
-  background-color: #d9d7e0;
+  justify-content: flex-start;
 }
 
 .pagination {
   margin: 0;
+}
+
+.pagination li a {
+  color: #ffffff7a;
 }
 
 .fa-chevron-left,
@@ -17,5 +17,5 @@
 }
 
 .pagination li.active {
-  background-color: #2f2942;
+  background-color: #26a69a;
 }

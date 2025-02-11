@@ -3,22 +3,32 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 10px 0 12px;
+  padding: 10px 0;
 }
 
 .about-movie__title {
-  color: #ffd366;
-  font-size: 32px;
+  color: #fff;
+  font-size: 20px;
 }
 
 .about-movie__content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 23px;
+  gap: 30px;
 }
 
 .about-movie__poster-img {
   object-fit: cover;
   width: 100%;
   height: 350px;
+}
+
+.about-movie__detail-item {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.about-movie__detail-item span {
+  color: #ffffff7a;
+  margin-right: 15px;
 }

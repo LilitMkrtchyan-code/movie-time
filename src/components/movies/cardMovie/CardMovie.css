@@ -1,7 +1,7 @@
 .card-movie {
   background-color: #d9d7e0;
   position: relative;
-  border-radius: 15px;
+  border-radius: 18px;
   border: 1px solid #000000;
   box-shadow: none;
   color: #100e19;
@@ -19,7 +19,7 @@
   width: 100%;
   object-fit: cover;
   height: 300px;
-  border-radius: 15px 15px 0 0;
+  border-radius: 18px 18px 0 0;
   transition: transform 0.3s ease;
 }
 
@@ -29,14 +29,14 @@
 
 .card-movie .card-content .card-title {
   font-family: Arial, Helvetica, sans-serif;
-  color: #23106e !important;
+  color: #100e19 !important;
   font-size: 18px;
   font-weight: 500;
 }
 
 .card-content__year-type {
   color: #100e19;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 }
 
 .card-movie:hover .card-hover {

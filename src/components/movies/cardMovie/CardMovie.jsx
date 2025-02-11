@@ -20,7 +20,9 @@ export const CardMovie = ({ movie = {} }) => {
     event.stopPropagation();
     document.title = `Movie ${title} (${year}) watch online free in good HD`;
     navigate(
-      `/about-movie?movieId=${id}&title=${encodeURIComponent(title)}&year=${year}`
+      `/about-movie?movieId=${id}&title=${encodeURIComponent(
+        title
+      )}&year=${year}`
     );
   };
 
@@ -49,7 +51,7 @@ export const CardMovie = ({ movie = {} }) => {
   const cardIcons = [
     {
       id: "1",
-      className: "fas fa-bookmark",
+      className: "far fa-bookmark favorite",
       onClick: handleFavoriteClick,
       size: 20,
       color: isFavorite ? "#2bbbad" : "#fff",
