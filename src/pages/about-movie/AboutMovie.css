@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 10px 0;
+  padding: 20px 0 0;
 }
 
 .about-movie__title {
@@ -31,4 +31,28 @@
 .about-movie__detail-item span {
   color: #ffffff7a;
   margin-right: 15px;
+}
+
+.about-movie__action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-movie__action-buttons .bookmark {
+  width: 100%;
+}
+
+.about-movie__action-buttons .bookmark:hover,
+.about-movie__action-buttons .share:hover {
+  background-color: #463f5f;
+  border: 1px solid #463f5f;
+}
+
+.action-button__text {
+  display: inline-block;
+  color: #c8c8c8;
+  margin-left: 10px;
+  font-size: 17px;
 }

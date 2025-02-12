@@ -14,6 +14,10 @@
   color: #d9d7e0;
 }
 
+.input-field .validate::placeholder {
+  color: #ffffff7a;
+}
+
 .input-field .validate:focus {
   background-color: transparent !important;
   border-bottom: 2px solid #26a69a !important;
@@ -21,7 +25,7 @@
 }
 
 .search-movie__label {
-  color: #ffffff7A;
+  color: #ffffff7a;
 }
 
 .search-movie__label:not(:last-child) {

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { omdbApi } from "../../api/api-movie";
 import { useLocation } from "react-router-dom";
 import { Rating } from "../../components/ui/rating/Rating";
+import { Button } from "../../components/ui/button/Button";
+import { Icon } from "../../components/ui/icon/Icon";
 import "./AboutMovie.css";
 
 export const AboutMovie = () => {
@@ -35,9 +37,7 @@ export const AboutMovie = () => {
     <section className="about-movie">
       <div className="about-movie__header">
         <div>
-          <h3 className="about-movie__title">
-            {movie.Title}
-          </h3>
+          <h3 className="about-movie__title">{movie.Title}</h3>
         </div>
         <Rating rating={movie.imdbRating} />
       </div>
@@ -86,6 +86,16 @@ export const AboutMovie = () => {
             </li>
             <li className="about-movie__detail-item">{movie.Plot}</li>
           </ul>
+          <div className="about-movie__action-buttons">
+            <Button type="button" className="action-button bookmark">
+              <Icon className="far fa-bookmark" size="20" color="#fff">
+                <span className="action-button__text">Watchlist</span>
+              </Icon>
+            </Button>
+            <Button type="button" className="action-button share">
+              <Icon className="fas fa-share" size="20" color="#fff" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>
