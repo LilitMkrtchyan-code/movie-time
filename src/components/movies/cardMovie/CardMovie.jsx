@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Storage } from "../../../utils/storage";
 import { Icon } from "../../ui/icon/Icon";
+import { defaultPoster } from "../../../utils/constants";
 import "./CardMovie.css";
 
 export const CardMovie = ({ movie = {} }) => {
@@ -64,8 +65,6 @@ export const CardMovie = ({ movie = {} }) => {
     },
     { id: "3", className: "far fa-star favorite", size: 20, color: "#fff" },
   ];
-
-  const defaultPoster = `https://st2.depositphotos.com/1105977/9877/i/450/depositphotos_98775856-stock-photo-retro-film-production-accessories-still.jpg`;
 
   return (
     <div id={id} className="card-movie" onClick={handleCardClick}>

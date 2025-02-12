@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Rating } from "../../components/ui/rating/Rating";
 import { Button } from "../../components/ui/button/Button";
 import { Icon } from "../../components/ui/icon/Icon";
+import {defaultPoster} from "../../utils/constants";
 import "./AboutMovie.css";
 
 export const AboutMovie = () => {
@@ -44,7 +45,7 @@ export const AboutMovie = () => {
       <div className="about-movie__content">
         <div className="about-movie__poster">
           <img
-            src={movie.Poster}
+            src={movie.Poster === "N/A" ?  defaultPoster : movie.Poster}
             alt={movie.Title}
             className="about-movie__poster-img"
           />

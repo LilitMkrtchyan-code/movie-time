@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 20px 0 0;
+  padding: 15px 0 0;
 }
 
 .about-movie__title {
@@ -30,7 +30,7 @@
 
 .about-movie__detail-item span {
   color: #ffffff7a;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .about-movie__action-buttons {
@@ -45,7 +45,9 @@
 }
 
 .about-movie__action-buttons .bookmark:hover,
-.about-movie__action-buttons .share:hover {
+.about-movie__action-buttons .bookmark:focus,
+.about-movie__action-buttons .share:hover,
+.about-movie__action-buttons .share:focus {
   background-color: #463f5f;
   border: 1px solid #463f5f;
 }
