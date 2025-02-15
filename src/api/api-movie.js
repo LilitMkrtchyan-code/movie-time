@@ -41,3 +41,5 @@ class OMDBApi {
 }
 
 export const omdbApi = new OMDBApi("ea4822c1");
+// const API_KEY = process.env.REACT_APP_API_KEY;
+// const URL = `https://www.omdbapi.com/?apikey=${API_KEY}&s=`;

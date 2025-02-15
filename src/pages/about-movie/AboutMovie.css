@@ -7,8 +7,8 @@
 }
 
 .about-movie__title {
-  color: #fff;
-  font-size: 20px;
+  color: #ffd575;
+  font-size: 22px;
 }
 
 .about-movie__content {
@@ -57,4 +57,14 @@
   color: #c8c8c8;
   margin-left: 10px;
   font-size: 17px;
+}
+
+@media screen and (max-width: 767px) {
+  .about-movie__header {
+    padding: 15px 0 15px;
+  }
+  .about-movie__content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }

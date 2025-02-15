@@ -4,14 +4,15 @@
 }
 
 .pagination {
-  background-color: #d9d7e0;
-  border-radius: 18px;
+  background-color: transparent;
+  border: 2px solid #26a69a;
+  border-radius: 20px;
   padding: 2px 0;
   margin: 0;
 }
 
 .pagination li a {
-  color: #100e19;
+  color: #ffffff7a;
 }
 
 .fa-chevron-left,
@@ -20,5 +21,5 @@
 }
 
 .pagination li.active {
-  background-color: #2f2942;
+  background-color: #26a69a;
 }

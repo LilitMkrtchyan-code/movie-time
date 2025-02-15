@@ -16,7 +16,8 @@
 
 @media (max-width: 575px) {
   .footer-content {
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
   }
 }
 

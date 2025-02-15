@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import "./SearchMovie.css";
 
-export const SearchMovie = ({ searchMovies }) => {
+export const SearchMovie = ({ searchQuery, searchMovies }) => {
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
+
   const searchInputRef = useRef(null);
 
   useEffect(() => {
@@ -17,8 +18,13 @@ export const SearchMovie = ({ searchMovies }) => {
   }
 
   function handleFilter(event) {
-    setType(event.target.dataset.type);
-    searchMovies(search, event.target.dataset.type);
+    const newType = event.target.dataset.type;
+    setType(newType);
+    if (search === "") {
+      searchMovies(searchQuery, newType);
+    } else {
+      searchMovies(search, newType);
+    }
   }
 
   function handleSearchChange(event) {
