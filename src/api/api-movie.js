@@ -1,3 +1,5 @@
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 class OMDBApi {
   constructor(apiKey) {
     this.apiKey = apiKey;
@@ -40,6 +42,4 @@ class OMDBApi {
   }
 }
 
-export const omdbApi = new OMDBApi("ea4822c1");
-// const API_KEY = process.env.REACT_APP_API_KEY;
-// const URL = `https://www.omdbapi.com/?apikey=${API_KEY}&s=`;
+export const omdbApi = new OMDBApi(API_KEY);

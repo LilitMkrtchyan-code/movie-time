@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useFavorites } from "../../../contexts/favorites-context";
 import { useNavigate } from "react-router-dom";
-import { Storage } from "../../../utils/storage";
 import { Icon } from "../../ui/icon/Icon";
 import { defaultPoster } from "../../../utils/constants";
 import "./CardMovie.css";
 
-export const CardMovie = ({ movie = {} }) => {
+export const CardMovie = ({ movie = {}, inFavoritesPage = false }) => {
   const {
     Title: title,
     Year: year,
@@ -14,7 +14,22 @@ export const CardMovie = ({ movie = {} }) => {
     Poster: poster,
   } = movie;
 
+  const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
   const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    setIsFavorite(favoriteMovies.some((favorite) => favorite.imdbID === id));
+  }, [favoriteMovies, id]);
+
+  const handleFavoriteClick = (event) => {
+    event.stopPropagation();
+    if (isFavorite) {
+      removeFavorite(id);
+    } else {
+      addFavorite(movie);
+    }
+  };
+
   const navigate = useNavigate();
 
   const handleCardClick = (event) => {
@@ -26,45 +41,6 @@ export const CardMovie = ({ movie = {} }) => {
       )}&year=${year}`
     );
   };
-
-  const handleFavoriteClick = (event) => {
-    event.stopPropagation();
-    const favorites = Storage.getItem("favoriteMovies") || [];
-    const isAlreadyFavorite = favorites.some(
-      (favorite) => favorite.imdbID === id
-    );
-
-    if (isAlreadyFavorite) {
-      const updatedFavorites = favorites.filter(
-        (favorite) => favorite.imdbID !== id
-      );
-      Storage.setItem("favoriteMovies", updatedFavorites);
-      console.log("The movie has been removed from favorites.");
-      setIsFavorite(false);
-    } else {
-      favorites.push(movie);
-      Storage.setItem("favoriteMovies", favorites);
-      console.log("The film has been added to favorites");
-      setIsFavorite(true);
-    }
-  };
-
-  const cardIcons = [
-    {
-      id: "1",
-      className: "far fa-bookmark favorite",
-      onClick: handleFavoriteClick,
-      size: 20,
-      color: isFavorite ? "#2bbbad" : "#fff",
-    },
-    {
-      id: "2",
-      className: "fas fa-share favorite",
-      size: 20,
-      color: "#fff",
-    },
-    { id: "3", className: "far fa-star favorite", size: 20, color: "#fff" },
-  ];
 
   return (
     <div id={id} className="card-movie" onClick={handleCardClick}>
@@ -86,16 +62,33 @@ export const CardMovie = ({ movie = {} }) => {
         </div>
       </div>
       <div className="card-hover">
-        {cardIcons.map((carIcon) => (
-          <div className="card-hover__content" key={carIcon.id}>
+        <div className="card-hover__content" style={{ paddingRight: "3px" }}>
+          {inFavoritesPage ? (
             <Icon
-              className={carIcon.className}
-              onClick={carIcon.onClick}
-              size={carIcon.size}
-              color={carIcon.color}
+              className="fas fa-trash"
+              onClick={handleFavoriteClick}
+              size={22}
+              color="#fff"
             />
-          </div>
-        ))}
+          ) : (
+            <Icon
+              className={
+                !isFavorite
+                  ? "far fa-bookmark favorite"
+                  : "fas fa-bookmark favorite"
+              }
+              onClick={handleFavoriteClick}
+              size={22}
+              color="#fff"
+            />
+          )}
+        </div>
+        <div className="card-hover__content">
+          <Icon className="fas fa-share favorite" size={22} />
+        </div>
+        <div className="card-hover__content">
+          <Icon className="far fa-star favorite" size={22} />
+        </div>
       </div>
     </div>
   );

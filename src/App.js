@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { FavoritesProvider } from "./contexts/favorites-context";
 import { Layout } from "./layouts/Layout";
 import { Home } from "./pages/Home";
 import { Favorites } from "./pages/Favorites";
@@ -7,7 +8,7 @@ import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   return (
-    <div className="App">
+    <FavoritesProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -16,7 +17,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </div>
+    </FavoritesProvider>
   );
 }
 

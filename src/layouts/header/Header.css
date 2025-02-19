@@ -69,3 +69,12 @@
 .nav-link:hover {
   color: #fff;
 }
+
+@media screen and (max-width: 500px) {
+  .header-section__nav {
+    gap: 10px;
+  }
+  .header-section__login {
+    padding: 9px;
+  }
+}

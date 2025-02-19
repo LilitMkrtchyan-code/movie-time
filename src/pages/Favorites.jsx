@@ -1,20 +1,25 @@
 import { Fragment, useEffect } from "react";
+import { useFavorites } from "../contexts/favorites-context";
 import { CardMovie } from "../components/movies/cardMovie/CardMovie";
-import { Storage } from "../utils/storage";
 
 export const Favorites = () => {
+  const { favoriteMovies } = useFavorites();
+
   useEffect(() => {
     document.title = "Favorite Movies";
   }, []);
 
-  const favoriteMovies = Storage.getItem("favoriteMovies") || [];
-
   return (
     <Fragment>
       <div className="movies">
-        {favoriteMovies.map((movie) => (
-          <CardMovie key={movie.imdbID} movie={movie} />
-        ))}
+        {favoriteMovies.length > 0 &&
+          favoriteMovies.map((favoriteMovie) => (
+            <CardMovie
+              key={favoriteMovie.imdbID}
+              movie={favoriteMovie}
+              inFavoritesPage={true}
+            />
+          ))}
       </div>
       {favoriteMovies.length === 0 && (
         <div className="movies__notfound">No favorite movies found.</div>

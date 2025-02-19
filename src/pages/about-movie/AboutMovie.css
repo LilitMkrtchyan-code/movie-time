@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 15px 0 0;
+  padding: 10px 0 0;
 }
 
 .about-movie__title {
@@ -28,9 +28,13 @@
   margin-bottom: 10px;
 }
 
+.about-movie__detail-item:not(:last-child) {
+  border-bottom: 1px solid #322a18;
+}
+
 .about-movie__detail-item span {
   color: #ffffff7a;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .about-movie__action-buttons {
@@ -40,13 +44,17 @@
   gap: 10px;
 }
 
-.about-movie__action-buttons .bookmark {
+.about-movie__action-buttons .trailer {
   width: 100%;
 }
 
+.about-movie__action-buttons .trailer:hover,
+.about-movie__action-buttons .trailer:focus,
 .about-movie__action-buttons .bookmark:hover,
-.about-movie__action-buttons .bookmark:focus,
-.about-movie__action-buttons .share:hover,
+.about-movie__action-buttons
+  .bookmark:focus
+  .about-movie__action-buttons
+  .share:hover,
 .about-movie__action-buttons .share:focus {
   background-color: #463f5f;
   border: 1px solid #463f5f;

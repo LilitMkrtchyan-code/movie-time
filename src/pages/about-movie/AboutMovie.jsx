@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useFavorites } from "../../contexts/favorites-context";
 import { omdbApi } from "../../api/api-movie";
 import { useLocation } from "react-router-dom";
 import { Rating } from "../../components/ui/rating/Rating";
@@ -9,8 +10,8 @@ import "./AboutMovie.css";
 
 export const AboutMovie = () => {
   const [movie, setMovie] = useState({});
+  const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
   const location = useLocation();
-  // {pathname: '/movie-details', search: '?movieId=tt9018736&title=Avatar%3A%20The%20Last%20Airbender&year=2024%E2%80%93', hash: '', state: null, key: '328qk3ha'}
 
   const urlParams = new URLSearchParams(location.search);
 
@@ -34,13 +35,23 @@ export const AboutMovie = () => {
     fetchMovieDetails();
   }, [id]);
 
+  const isMovieFavorite = favoriteMovies.some((movie) => movie.imdbID === id);
+
+  const handleToggleFavorite = () => {
+    if (isMovieFavorite) {
+      removeFavorite(movie.imdbID);
+    } else {
+      addFavorite(movie);
+    }
+  };
+
   return (
     <section className="about-movie">
       <div className="about-movie__header">
         <div>
           <h3 className="about-movie__title">{movie.Title}</h3>
         </div>
-        <Rating rating={movie.imdbRating} />
+        <Rating rating={movie.imdbRating} label="IMDb RATING" />
       </div>
       <div className="about-movie__content">
         <div className="about-movie__poster">
@@ -53,48 +64,66 @@ export const AboutMovie = () => {
         <div className="about-movie__details">
           <ul className="about-movie__details-list">
             <li className="about-movie__detail-item">
-              <span>Year: </span>
+              <span>Year </span>
               {movie.Year}
             </li>
             <li className="about-movie__detail-item">
-              <span>Country: </span>
+              <span>Country </span>
               {movie.Country}
             </li>
-
             <li className="about-movie__detail-item">
-              <span>Runtime: </span>
+              <span>Runtime </span>
               {movie.Runtime}
             </li>
             <li className="about-movie__detail-item">
-              <span>Genre: </span>
+              <span>Genre </span>
               {movie.Genre}
             </li>
             <li className="about-movie__detail-item">
-              <span>Released: </span>
+              <span>Released </span>
               {movie.Released}
             </li>
             <li className="about-movie__detail-item">
-              <span>Director: </span>
+              <span>Director </span>
               {movie.Director}
             </li>
             <li className="about-movie__detail-item">
-              <span>Writer: </span>
+              <span>Writer </span>
               {movie.Writer}
             </li>
             <li className="about-movie__detail-item">
-              <span>Actors: </span>
+              <span>Actors </span>
               {movie.Actors}
+            </li>
+            <li className="about-movie__detail-item">
+              <span>Imdb Votes</span>
+              {movie.imdbVotes}
             </li>
             <li className="about-movie__detail-item">{movie.Plot}</li>
           </ul>
           <div className="about-movie__action-buttons">
-            <Button type="button" className="action-button bookmark">
-              <Icon className="far fa-bookmark" size="20" color="#fff">
-                <span className="action-button__text">Watchlist</span>
+            <Button type="button" className="action-button trailer">
+              <Icon className="fas fa-play" size="17" color="#fff">
+                <span className="action-button__text">Trailer</span>
               </Icon>
             </Button>
+            <Button
+              type="button"
+              className="action-button bookmark"
+              onClick={handleToggleFavorite}
+            >
+              <Icon
+                className={
+                  isMovieFavorite
+                    ? "fas fa-bookmark favorite"
+                    : "far fa-bookmark favorite"
+                }
+                size="17"
+                color="#fff"
+              />
+            </Button>
             <Button type="button" className="action-button share">
-              <Icon className="fas fa-share" size="20" color="#fff" />
+              <Icon className="fas fa-share" size="17" color="#fff" />
             </Button>
           </div>
         </div>
@@ -102,4 +131,3 @@ export const AboutMovie = () => {
     </section>
   );
 };
-// https://www.omdbapi.com/?i=tt10872600&apikey=ea4822c1
