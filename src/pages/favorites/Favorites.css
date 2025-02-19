@@ -1,0 +1,8 @@
+.favorite-movies__title {
+  color: #fff;
+  font-size: 40px;
+  text-transform: capitalize;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}

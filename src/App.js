@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { FavoritesProvider } from "./contexts/favorites-context";
 import { Layout } from "./layouts/Layout";
 import { Home } from "./pages/Home";
-import { Favorites } from "./pages/Favorites";
+import { Favorites } from "./pages/favorites/Favorites";
 import { AboutMovie } from "./pages/about-movie/AboutMovie";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 
@@ -22,3 +22,4 @@ function App() {
 }
 
 export default App;
+git add

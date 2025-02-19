@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../contexts/favorites-context";
 import { omdbApi } from "../../api/api-movie";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Rating } from "../../components/ui/rating/Rating";
 import { Button } from "../../components/ui/button/Button";
 import { Icon } from "../../components/ui/icon/Icon";
@@ -11,12 +11,9 @@ import "./AboutMovie.css";
 export const AboutMovie = () => {
   const [movie, setMovie] = useState({});
   const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
+
   const location = useLocation();
-
   const urlParams = new URLSearchParams(location.search);
-
-  const title = urlParams.get("title");
-  const year = urlParams.get("year");
   const id = urlParams.get("movieId");
 
   useEffect(() => {
@@ -103,9 +100,15 @@ export const AboutMovie = () => {
           </ul>
           <div className="about-movie__action-buttons">
             <Button type="button" className="action-button trailer">
-              <Icon className="fas fa-play" size="17" color="#fff">
-                <span className="action-button__text">Trailer</span>
-              </Icon>
+              <Link
+                to={`https://www.imdb.com/title/${movie.imdbID}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon className="fas fa-play" size="17" color="#fff">
+                  <span className="action-button__text">Watch on IMDb</span>
+                </Icon>
+              </Link>
             </Button>
             <Button
               type="button"
