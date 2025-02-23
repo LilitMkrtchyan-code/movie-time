@@ -37,30 +37,48 @@
   margin-right: 12px;
 }
 
-.about-movie__action-buttons {
+.about-movie__actions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
 
-.about-movie__action-buttons .trailer {
+.about-movie__actions .watch {
   width: 100%;
+  background-color: #2f2942;
+  border: 1px solid #2f2942;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  gap: 10px;
 }
 
-.about-movie__action-buttons .trailer:hover,
-.about-movie__action-buttons .trailer:focus,
-.about-movie__action-buttons .bookmark:hover,
-.about-movie__action-buttons
-  .bookmark:focus
-  .about-movie__action-buttons
-  .share:hover,
-.about-movie__action-buttons .share:focus {
+.IMDb-img {
+  width: 64px;
+  height: 37px;
+}
+
+.about-movie__actions .watch:hover,
+.about-movie__actions .watch:focus,
+.about-movie__actions .bookmark:hover,
+.about-movie__actions .bookmark:focus,
+.about-movie__actions .share:hover,
+.about-movie__actions .share:focus {
   background-color: #463f5f;
   border: 1px solid #463f5f;
 }
 
-.action-button__text {
+.bookmark.favorite {
+  background-color: #23968b;
+  border-color: #23968b;
+}
+
+.bookmark.favorite:hover {
+  background-color: #32aca0;
+}
+
+.action-link__text {
   display: inline-block;
   color: #c8c8c8;
   margin-left: 10px;

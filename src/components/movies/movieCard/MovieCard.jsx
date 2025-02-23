@@ -3,9 +3,9 @@ import { useFavorites } from "../../../contexts/favorites-context";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "../../ui/icon/Icon";
 import { defaultPoster } from "../../../utils/constants";
-import "./CardMovie.css";
+import "./MovieCard.css";
 
-export const CardMovie = ({ movie = {}, inFavoritesPage = false }) => {
+export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
   const {
     Title: title,
     Year: year,
@@ -36,7 +36,7 @@ export const CardMovie = ({ movie = {}, inFavoritesPage = false }) => {
     event.stopPropagation();
     document.title = `Movie ${title} (${year}) watch online free in good HD`;
     navigate(
-      `/about-movie?movieId=${id}&title=${encodeURIComponent(
+      `/movie-details?movieId=${id}&title=${encodeURIComponent(
         title
       )}&year=${year}`
     );
@@ -72,11 +72,7 @@ export const CardMovie = ({ movie = {}, inFavoritesPage = false }) => {
             />
           ) : (
             <Icon
-              className={
-                !isFavorite
-                  ? "far fa-bookmark favorite"
-                  : "fas fa-bookmark favorite"
-              }
+              className={!isFavorite ? "far fa-bookmark" : "fas fa-bookmark"}
               onClick={handleFavoriteClick}
               size={22}
               color="#fff"
@@ -84,10 +80,10 @@ export const CardMovie = ({ movie = {}, inFavoritesPage = false }) => {
           )}
         </div>
         <div className="card-hover__content">
-          <Icon className="fas fa-share favorite" size={22} />
+          <Icon className="fas fa-share" size={22} />
         </div>
         <div className="card-hover__content">
-          <Icon className="far fa-star favorite" size={22} />
+          <Icon className="far fa-star" size={22} />
         </div>
       </div>
     </div>

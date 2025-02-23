@@ -6,11 +6,14 @@ import { Rating } from "../../components/ui/rating/Rating";
 import { Button } from "../../components/ui/button/Button";
 import { Icon } from "../../components/ui/icon/Icon";
 import { defaultPoster } from "../../utils/constants";
-import "./AboutMovie.css";
+import IMDbImg from "../../assets/images/imdb.png";
+import "./MovieDetails.css";
+import { Flag } from "../../components/ui/flag/Flag";
 
-export const AboutMovie = () => {
+export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
@@ -32,16 +35,20 @@ export const AboutMovie = () => {
     fetchMovieDetails();
   }, [id]);
 
-  const isMovieFavorite = favoriteMovies.some((movie) => movie.imdbID === id);
+  useEffect(() => {
+    setIsFavorite(favoriteMovies.some((movie) => movie.imdbID === id));
+  }, [favoriteMovies, id]);
 
   const handleToggleFavorite = () => {
-    if (isMovieFavorite) {
+    if (isFavorite) {
       removeFavorite(movie.imdbID);
+      setIsFavorite(false);
     } else {
       addFavorite(movie);
+      setIsFavorite(true);
     }
   };
-
+  
   return (
     <section className="about-movie">
       <div className="about-movie__header">
@@ -65,8 +72,10 @@ export const AboutMovie = () => {
               {movie.Year}
             </li>
             <li className="about-movie__detail-item">
-              <span>Country </span>
-              {movie.Country}
+              <span>Country</span>
+              {(movie?.Country || "").split(", ").map((country) => (
+                <Flag key={country} country={country} />
+              ))}
             </li>
             <li className="about-movie__detail-item">
               <span>Runtime </span>
@@ -98,29 +107,27 @@ export const AboutMovie = () => {
             </li>
             <li className="about-movie__detail-item">{movie.Plot}</li>
           </ul>
-          <div className="about-movie__action-buttons">
-            <Button type="button" className="action-button trailer">
-              <Link
-                to={`https://www.imdb.com/title/${movie.imdbID}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon className="fas fa-play" size="17" color="#fff">
-                  <span className="action-button__text">Watch on IMDb</span>
-                </Icon>
-              </Link>
-            </Button>
+          <div className="about-movie__actions">
+            <Link
+              to={`https://www.imdb.com/title/${movie.imdbID}`}
+              target="_blank"
+              className="watch"
+              rel="noopener noreferrer"
+            >
+              <Icon className="fas fa-play" size="17" color="#fff">
+                <span className="action-link__text">Watch on </span>
+              </Icon>
+              <img className="IMDb-img" src={IMDbImg} alt="IMDb" />
+            </Link>
             <Button
               type="button"
-              className="action-button bookmark"
+              className={`action-button bookmark ${
+                isFavorite ? "favorite" : ""
+              }`}
               onClick={handleToggleFavorite}
             >
               <Icon
-                className={
-                  isMovieFavorite
-                    ? "fas fa-bookmark favorite"
-                    : "far fa-bookmark favorite"
-                }
+                className={isFavorite ? "fas fa-bookmark" : "far fa-bookmark"}
                 size="17"
                 color="#fff"
               />

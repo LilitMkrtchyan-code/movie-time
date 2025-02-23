@@ -1,5 +1,5 @@
-import "./NotFoundPage.css";
+import "./NotFound.css";
 
-export const NotFoundPage = () => {
+export const NotFound = () => {
    return <div className="not-found-page">Not Found Page</div>
 };

@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
-import { omdbApi } from "../api/api-movie";
-import { Preloader } from "../components/ui/preloader/Preloader";
-import { SearchMovie } from "../components/movies/searchMovie/SearchMovie";
-import { Movies } from "../components/movies/Movies";
-import { Pagination } from "../components/ui/pagination/Pagination";
+import { omdbApi } from "../../api/api-movie";
+import { Preloader } from "../../components/ui/preloader/Preloader";
+import { SearchMovie } from "../../components/movies/searchMovie/SearchMovie";
+import { MovieList } from "../../components/movies/movieList/MovieList";
+import { Pagination } from "../../components/ui/pagination/Pagination";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -47,7 +47,7 @@ export const Home = () => {
   return (
     <Fragment>
       <SearchMovie searchQuery={searchQuery} searchMovies={searchMovies} />
-      {loading ? <Preloader /> : <Movies movies={movies} error={error} />}
+      {loading ? <Preloader /> : <MovieList movies={movies} error={error} />}
       {movies.length > 0 && !error && !loading && (
         <Pagination
           currentPage={currentPage}

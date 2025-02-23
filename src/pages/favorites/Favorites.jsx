@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useFavorites } from "../../contexts/favorites-context";
-import { CardMovie } from "../../components/movies/cardMovie/CardMovie";
+import { MovieCard } from "../../components/movies/movieCard/MovieCard";
 import "./Favorites.css";
 
 export const Favorites = () => {
@@ -12,11 +12,13 @@ export const Favorites = () => {
 
   return (
     <div className="favorite-movies">
-      <h1 className="favorite-movies__title">Your favorite movies</h1>
+      {favoriteMovies.length > 0 && (
+        <h1 className="favorite-movies__title">Your favorite movies</h1>
+      )}
       <div className="movies">
         {favoriteMovies.length > 0 &&
           favoriteMovies.map((favoriteMovie) => (
-            <CardMovie
+            <MovieCard
               key={favoriteMovie.imdbID}
               movie={favoriteMovie}
               inFavoritesPage={true}
