@@ -1,0 +1,14 @@
+.about-movie__detail-item {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--text-default);
+}
+
+.about-movie__detail-item:not(:last-child) {
+  border-bottom: 1px solid #322a18;
+}
+
+.about-movie__detail-item span {
+  color: #ffffff7a;
+  margin-right: 12px;
+}

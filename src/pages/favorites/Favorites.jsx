@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useFavorites } from "../../contexts/favorites-context";
 import { MovieCard } from "../../components/movies/movieCard/MovieCard";
+import { PageTitle } from "../../components/movies/page-title/PageTitle";
 import "./Favorites.css";
 
 export const Favorites = () => {
@@ -13,7 +14,7 @@ export const Favorites = () => {
   return (
     <div className="favorite-movies">
       {favoriteMovies.length > 0 && (
-        <h1 className="favorite-movies__title">Your favorite movies</h1>
+        <PageTitle className="favorites-heading" text="Your favorite movies" />
       )}
       <div className="movies">
         {favoriteMovies.length > 0 &&

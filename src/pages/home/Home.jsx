@@ -47,7 +47,11 @@ export const Home = () => {
   return (
     <Fragment>
       <SearchMovie searchQuery={searchQuery} searchMovies={searchMovies} />
-      {loading ? <Preloader /> : <MovieList movies={movies} error={error} />}
+      {loading ? (
+        <Preloader size="medium" text="loading..." />
+      ) : (
+        <MovieList movies={movies} error={error} />
+      )}
       {movies.length > 0 && !error && !loading && (
         <Pagination
           currentPage={currentPage}

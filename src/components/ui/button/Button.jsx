@@ -4,7 +4,7 @@ export const Button = (props) => {
   if (!props) return null;
 
   const {
-    className = "btn",
+    className = "but",
     onClick,
     type = "button",
     children,

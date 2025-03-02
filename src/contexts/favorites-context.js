@@ -24,6 +24,7 @@ export const FavoritesProvider = ({ children }) => {
     Storage.setItem("favoriteMovies", updatedFavorites);
     setFavoriteMovies(updatedFavorites);
   };
+
   return (
     <FavoritesContext.Provider
       value={{ favoriteMovies, addFavorite, removeFavorite }}

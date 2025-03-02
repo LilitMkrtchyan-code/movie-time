@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 import { useFavorites } from "../../contexts/favorites-context";
+import { MovieDetailsList } from "./movieDetails-list/MovieDetailsList";
+import { MovieActions } from "./movie-actions/MovieActions";
 import { omdbApi } from "../../api/api-movie";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Rating } from "../../components/ui/rating/Rating";
-import { Button } from "../../components/ui/button/Button";
-import { Icon } from "../../components/ui/icon/Icon";
 import { defaultPoster } from "../../utils/constants";
-import IMDbImg from "../../assets/images/imdb.png";
 import "./MovieDetails.css";
-import { Flag } from "../../components/ui/flag/Flag";
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(null);
 
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const id = urlParams.get("movieId");
 
   useEffect(() => {
+    if (!id) return;
     const fetchMovieDetails = async () => {
       try {
         const response = await omdbApi.fetchByID(id);
@@ -40,6 +39,7 @@ export const MovieDetails = () => {
   }, [favoriteMovies, id]);
 
   const handleToggleFavorite = () => {
+    console.log("Before toggle:", isFavorite);
     if (isFavorite) {
       removeFavorite(movie.imdbID);
       setIsFavorite(false);
@@ -47,14 +47,15 @@ export const MovieDetails = () => {
       addFavorite(movie);
       setIsFavorite(true);
     }
+    console.log("After toggle:", isFavorite);
   };
-  
+
   return (
     <section className="about-movie">
       <div className="about-movie__header">
-        <div>
-          <h3 className="about-movie__title">{movie.Title}</h3>
-        </div>
+        <h3 className="about-movie__title">
+          {movie.Title} ({movie.Year})
+        </h3>
         <Rating rating={movie.imdbRating} label="IMDb RATING" />
       </div>
       <div className="about-movie__content">
@@ -66,76 +67,12 @@ export const MovieDetails = () => {
           />
         </div>
         <div className="about-movie__details">
-          <ul className="about-movie__details-list">
-            <li className="about-movie__detail-item">
-              <span>Year </span>
-              {movie.Year}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Country</span>
-              {(movie?.Country || "").split(", ").map((country) => (
-                <Flag key={country} country={country} />
-              ))}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Runtime </span>
-              {movie.Runtime}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Genre </span>
-              {movie.Genre}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Released </span>
-              {movie.Released}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Director </span>
-              {movie.Director}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Writer </span>
-              {movie.Writer}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Actors </span>
-              {movie.Actors}
-            </li>
-            <li className="about-movie__detail-item">
-              <span>Imdb Votes</span>
-              {movie.imdbVotes}
-            </li>
-            <li className="about-movie__detail-item">{movie.Plot}</li>
-          </ul>
-          <div className="about-movie__actions">
-            <Link
-              to={`https://www.imdb.com/title/${movie.imdbID}`}
-              target="_blank"
-              className="watch"
-              rel="noopener noreferrer"
-            >
-              <Icon className="fas fa-play" size="17" color="#fff">
-                <span className="action-link__text">Watch on </span>
-              </Icon>
-              <img className="IMDb-img" src={IMDbImg} alt="IMDb" />
-            </Link>
-            <Button
-              type="button"
-              className={`action-button bookmark ${
-                isFavorite ? "favorite" : ""
-              }`}
-              onClick={handleToggleFavorite}
-            >
-              <Icon
-                className={isFavorite ? "fas fa-bookmark" : "far fa-bookmark"}
-                size="17"
-                color="#fff"
-              />
-            </Button>
-            <Button type="button" className="action-button share">
-              <Icon className="fas fa-share" size="17" color="#fff" />
-            </Button>
-          </div>
+          <MovieDetailsList movie={movie} />
+          <MovieActions
+            movie={movie}
+            isFavorite={isFavorite}
+            onToggleFavorite={handleToggleFavorite}
+          />
         </div>
       </div>
     </section>

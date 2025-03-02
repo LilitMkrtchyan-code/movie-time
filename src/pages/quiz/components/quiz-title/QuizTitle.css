@@ -1,0 +1,11 @@
+.quiz-title {
+  font-size: 36px;
+  color: #ffd575;
+  margin: 50px 0 20px;
+}
+
+@media screen and (max-width: 575px) {
+  .quiz-start__title {
+    font-size: 34px;
+  }
+}

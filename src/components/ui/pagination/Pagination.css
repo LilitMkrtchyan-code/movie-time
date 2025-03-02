@@ -1,14 +1,14 @@
 .pagination-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .pagination {
   background-color: transparent;
-  border: 2px solid #26a69a;
   border-radius: 20px;
-  padding: 1px 0;
+  padding: 4px 0;
   margin: 0;
+  box-shadow: 0 4px 6px #26a69a;
 }
 
 .pagination li a {
@@ -27,5 +27,11 @@
 @media (max-width: 992px) {
   .pagination {
     width: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .pagination li a {
+    padding: 0 6px;
   }
 }

@@ -1,3 +1,15 @@
+:root {
+  --ff-primary: Arial, Helvetica, sans-serif;
+  --text-default: #d9d7e0;
+  --color-primary: #26a69a;
+  --color-second: #ffd575;
+  --white-100: #ffffff;
+  --grey-200: #C8C8C8;
+  --grey-300: #a0a0a0;
+  --grey-400: #ffffff7a;
+  --box-shadow-primary: 0 4px 6px #26a69a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -21,9 +33,9 @@ h6 {
 body {
   margin: 0;
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--ff-primary);
   background-color: #100e19;
-  color: #d9d7e0;
+  color: var(--text-default);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,6 +47,6 @@ ul {
 
 .movies__notfound {
   text-align: center;
-  color: #fff;
+  color: var(--white-100);
   font-size: 22px;
 }

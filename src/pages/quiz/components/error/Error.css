@@ -1,0 +1,18 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.error-message {
+  font-family: var(--ff-primary);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--grey-200);
+}

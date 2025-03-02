@@ -1,6 +1,7 @@
 export const countryFlags = {
   "United States": "https://flagcdn.com/w320/us.png",
   USA: "https://flagcdn.com/w320/us.png",
+  "Czech Republic": "https://flagcdn.com/w320/cz.png",
   Canada: "https://flagcdn.com/w320/ca.png",
   "United Kingdom": "https://flagcdn.com/w320/gb.png",
   Germany: "https://flagcdn.com/w320/de.png",

@@ -9,3 +9,8 @@
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
+
+.but:hover {
+  background-color: #463f5f;
+  border: 1px solid #463f5f;
+}

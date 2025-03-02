@@ -27,11 +27,16 @@ export const Header = () => {
                 Favorites
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/quiz" className="nav-link">
+                Quiz
+              </Link>
+            </li>
           </ul>
-          <Button className="header-section__login">
+          {/* <Button className="header-section__login">
             <i className="far fa-user"></i>
             <span className="login-text"> Log In</span>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </header>

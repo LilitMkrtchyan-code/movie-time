@@ -17,27 +17,27 @@
   text-decoration: none;
 }
 
-.header-section__login {
+/* .header-section__login {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 9px 14px 9px 12px;
-}
+} */
 
-.header-section__login:hover {
+/* .header-section__login:hover {
   background-color: #3d3653;
   border: 1px solid #3d3653;
-}
+} */
 
-.login-text {
+/* .login-text {
   color: #fff;
   margin-top: 2px;
-}
+} */
 
-.fa-user {
+/* .fa-user {
   font-size: 18px;
-}
+} */
 
 .highlight {
   color: #2bbbad;
@@ -68,6 +68,8 @@
 
 .nav-link:hover {
   color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 7px;
 }
 
 @media screen and (max-width: 500px) {

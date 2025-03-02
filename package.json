@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
+    "materialize-css": "^1.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-loading-indicators": "^1.0.0",

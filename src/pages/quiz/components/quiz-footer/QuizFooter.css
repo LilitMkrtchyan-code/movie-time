@@ -1,0 +1,22 @@
+.quiz-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.quiz-button,
+.quiz-footer__timer {
+  border: 2px solid #2f2942;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 100px;
+}
+
+.quiz-footer__timer {
+  padding: 10px 30px;
+}
+
+.quiz-button:hover {
+  border: 2px solid #463f5f;
+}

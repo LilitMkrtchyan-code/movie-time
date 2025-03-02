@@ -1,0 +1,66 @@
+.about-movie__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-movie__actions .watch {
+  width: 100%;
+  background-color: #2f2942;
+  border: 1px solid #2f2942;
+  padding: 2px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  gap: 10px;
+}
+
+.IMDb-img {
+  width: 64px;
+  height: 37px;
+}
+
+.about-movie__actions .bookmark {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.about-movie__actions .bookmark,
+.about-movie__actions .share {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.about-movie__actions .watch:hover,
+.about-movie__actions .watch:focus,
+.about-movie__actions .bookmark:hover,
+.about-movie__actions .bookmark:focus,
+.about-movie__actions .share:hover,
+.about-movie__actions .share:focus {
+  background-color: #463f5f;
+  border: 1px solid #463f5f;
+}
+
+.bookmark.favorite {
+  background-color: #23968b;
+  border-color: #23968b;
+}
+
+.bookmark.favorite:hover {
+  background-color: #32aca0;
+}
+
+.action-link__text {
+  display: inline-block;
+  color: #c8c8c8;
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+@media (max-width: 400px) {
+  .IMDb-img {
+    width: 60px;
+    height: 37px;
+  }
+}

@@ -9,7 +9,6 @@ export const Flag = ({ country }) => {
           alt={country}
           width={24}
           height={16}
-          style={{ marginRight: "5px" }}
         />
       ) : (
         country + ","

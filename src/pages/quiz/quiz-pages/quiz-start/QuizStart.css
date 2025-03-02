@@ -1,0 +1,33 @@
+.quiz-start {
+  text-align: center;
+}
+
+.quiz-start__subtitle {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #d9d7e0;
+}
+
+.quiz-start__btn {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  background-color: transparent;
+  border: 1px solid #26a69a;
+  border-radius: 24px;
+  color: #fff;
+  padding: 12px 24px;
+  box-shadow: 0 4px 6px #26a69a;
+}
+
+.quiz-start__btn:hover {
+  background-color: #219d91;
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 575px) {
+  .quiz-start__subtitle {
+    font-size: 20px;
+  }
+}

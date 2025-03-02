@@ -16,6 +16,7 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
 
   const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
   const [isFavorite, setIsFavorite] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsFavorite(favoriteMovies.some((favorite) => favorite.imdbID === id));
@@ -29,8 +30,6 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
       addFavorite(movie);
     }
   };
-
-  const navigate = useNavigate();
 
   const handleCardClick = (event) => {
     event.stopPropagation();
@@ -74,16 +73,13 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
             <Icon
               className={!isFavorite ? "far fa-bookmark" : "fas fa-bookmark"}
               onClick={handleFavoriteClick}
-              size={22}
+              size={25}
               color="#fff"
             />
           )}
         </div>
         <div className="card-hover__content">
-          <Icon className="fas fa-share" size={22} />
-        </div>
-        <div className="card-hover__content">
-          <Icon className="far fa-star" size={22} />
+          <Icon className="fas fa-share" size={25} />
         </div>
       </div>
     </div>
