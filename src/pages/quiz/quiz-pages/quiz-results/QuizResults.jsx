@@ -6,10 +6,14 @@ import { Button } from "../../../../components/ui/button/Button";
 import "./QuizResults.css";
 
 export const QuizResults = () => {
-  const { points, maxPossiblePoints, dispatch, status } =
-    useContext(QuizContext);
+  const { points, maxPossiblePoints, dispatch } = useContext(QuizContext);
   const navigate = useNavigate();
+
   const percentage = Math.round((points / maxPossiblePoints) * 100);
+
+  useEffect(() => {
+    document.title = "Quiz Results";
+  }, []);
 
   let congrats;
   if (percentage === 100) congrats = "Perfect!";

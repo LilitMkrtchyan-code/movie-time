@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { QuizContext } from "../../context/quiz-context";
 import { Error } from "../../components/error/Error";
 import { Progress } from "../../components/progress/Progress";
@@ -9,6 +9,10 @@ import "./QuizQuestions.css";
 
 export const QuizQuestions = () => {
   const { status } = useContext(QuizContext);
+
+  useEffect(() => {
+    document.title = "Quiz Questions";
+  }, []);
 
   return (
     <div className="quiz-questions">
