@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./header/Header";
-import { PageTitle } from "../components/movies/page-title/PageTitle";
+import { PageTitle } from "../components/ui/page-title/PageTitle";
 import { Footer } from "./footer/Footer";
 import "./Layout.css";
 

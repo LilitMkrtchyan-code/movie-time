@@ -4,14 +4,9 @@ export const Flag = ({ country }) => {
   return (
     <span>
       {countryFlags[country] ? (
-        <img
-          src={countryFlags[country]}
-          alt={country}
-          width={24}
-          height={16}
-        />
+        <img src={countryFlags[country]} alt={country} width={24} height={16} />
       ) : (
-        country + ","
+        country
       )}
     </span>
   );

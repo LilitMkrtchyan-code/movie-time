@@ -16,13 +16,13 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-  background-color: #d9d7e0;
+  background-color: var(--grey-100);
   border-radius: 100px;
   height: 14px;
 }
 
 progress::-moz-progress-bar {
-  background-color: #d9d7e0;
+  background-color: var(--grey-100);
   border-radius: 100px;
   height: 14px;
 }

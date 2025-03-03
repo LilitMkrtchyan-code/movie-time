@@ -16,34 +16,40 @@ export const QuizFooter = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const id = setInterval(() => {
-      dispatch({ type: "TICK" });
-    }, 1000);
-    return () => {
-      clearInterval(id);
-    };
-  }, [dispatch]);
+    if (secondsRemaining > 0) {
+      const id = setInterval(() => {
+        dispatch({ type: "TICK" });
+      }, 1000);
+      return () => clearInterval(id);
+    }
+  }, [dispatch, secondsRemaining]);
 
   const timer = getCorrectFormat(secondsRemaining);
 
-  const handleFinish = () => {
+  const handleFinishQuiz = () => {
     dispatch({ type: "FINISH" });
     navigate("/quiz/results");
   };
 
+  const showFinishButton =
+    secondsRemaining === 0 ||
+    (answer !== null && index === questions.length - 1);
+
   return (
     <footer className="quiz-footer">
       <span className="quiz-footer__timer">{timer}</span>
-      {answer !== null && index < questions.length - 1 && (
-        <Button
-          className="quiz-button"
-          onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-        >
-          Next
-        </Button>
-      )}
-      {answer !== null && index === questions.length - 1 && (
-        <Button className="quiz-button" onClick={handleFinish}>
+      {answer !== null &&
+        index < questions.length - 1 &&
+        secondsRemaining > 0 && (
+          <Button
+            className="quiz-button"
+            onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+          >
+            Next
+          </Button>
+        )}
+      {showFinishButton && (
+        <Button className="quiz-button" onClick={handleFinishQuiz}>
           Finish
         </Button>
       )}

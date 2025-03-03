@@ -3,10 +3,15 @@
   --text-default: #d9d7e0;
   --color-primary: #26a69a;
   --color-second: #ffd575;
+  --dark-primary: #100e19;
   --white-100: #ffffff;
-  --grey-200: #C8C8C8;
+  --grey-100: #d9d7e0;
+  --grey-200: #c8c8c8;
   --grey-300: #a0a0a0;
   --grey-400: #ffffff7a;
+  --blue-500: #1f1066;
+  --violet-300: #463f5f;
+  --violet-400: #2f2942;
   --box-shadow-primary: 0 4px 6px #26a69a;
 }
 

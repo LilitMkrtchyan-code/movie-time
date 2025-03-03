@@ -5,7 +5,7 @@
 .quiz-start__subtitle {
   font-size: 24px;
   margin-bottom: 40px;
-  color: #d9d7e0;
+  color: var(--grey-100);
 }
 
 .quiz-start__btn {
@@ -13,11 +13,11 @@
   font-weight: 500;
   letter-spacing: 2px;
   background-color: transparent;
-  border: 1px solid #26a69a;
+  border: 1px solid var(--color-primary);
   border-radius: 24px;
-  color: #fff;
+  color: var(--white-100);
   padding: 12px 24px;
-  box-shadow: 0 4px 6px #26a69a;
+  box-shadow: 0 4px 6px var(--color-primary);
 }
 
 .quiz-start__btn:hover {

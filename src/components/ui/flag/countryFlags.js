@@ -18,6 +18,7 @@ export const countryFlags = {
   Russia: "https://flagcdn.com/w320/ru.png",
   Argentina: "https://flagcdn.com/w320/ar.png",
   SouthKorea: "https://flagcdn.com/w320/kr.png",
+  "South Korea": "https://flagcdn.com/w320/kr.png",
   Turkey: "https://flagcdn.com/w320/tr.png",
   Netherlands: "https://flagcdn.com/w320/nl.png",
   Sweden: "https://flagcdn.com/w320/se.png",

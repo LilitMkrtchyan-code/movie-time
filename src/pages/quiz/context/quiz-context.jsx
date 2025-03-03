@@ -14,12 +14,6 @@ const initialStateQuiz = {
 
 const reducerQuiz = (state, action) => {
   switch (action.type) {
-    case "START":
-      return {
-        ...state,
-        status: "active",
-        secondsRemaining: state.questions.length * 30,
-      };
     case "DATA_RECEIVED":
       return {
         ...state,
@@ -34,6 +28,12 @@ const reducerQuiz = (state, action) => {
       return {
         ...state,
         status: "error",
+      };
+    case "START":
+      return {
+        ...state,
+        status: "active",
+        secondsRemaining: state.questions.length * 20,
       };
     case "NEW_ANSWER":
       const question = state.questions[state.index];
@@ -51,16 +51,16 @@ const reducerQuiz = (state, action) => {
         index: state.index + 1,
         answer: null,
       };
+    case "FINISH":
+      return {
+        ...state,
+        status: "finished",
+      };
     case "TICK":
       return {
         ...state,
         secondsRemaining: state.secondsRemaining - 1,
         status: state.secondsRemaining === 0 ? "finished" : state.status,
-      };
-    case "FINISH":
-      return {
-        ...state,
-        status: "finished",
       };
     case "RESTART":
       return {

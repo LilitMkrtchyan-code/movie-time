@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../../context/quiz-context";
-import { QuizTitle } from "../../components/quiz-title/QuizTitle";
+import { PageTitle } from "../../../../components/ui/page-title/PageTitle";
 import { Button } from "../../../../components/ui/button/Button";
 import "./QuizResults.css";
 
@@ -28,10 +28,13 @@ export const QuizResults = () => {
 
   return (
     <div className="quiz-results">
-      <QuizTitle title="Quiz Results" className="quiz-results__title" />
+      <PageTitle
+        text="Quiz Results"
+        className="quiz-title quiz-results__title"
+      />
       <div className="quiz-results__text">
-        {congrats} You scored <strong>{points}</strong> out of{" "}
-        {maxPossiblePoints} ({percentage}%)
+        {congrats} You scored {points} out of {maxPossiblePoints} (
+        {isNaN(percentage) ? 0 : percentage}%)
       </div>
       <Button className="quiz-button" onClick={handleResetClick}>
         Reset

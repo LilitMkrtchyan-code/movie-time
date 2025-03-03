@@ -2,8 +2,13 @@
   text-align: center;
 }
 
+.quiz-results .quiz-results__title {
+  letter-spacing: normal;
+  margin: 50px 0 25px;
+}
+
 .quiz-results__text {
-  background-color: #16988b;
+  background-color: #0a9586;
   color: var(--white-100);
   font-family: var(--ff-primary);
   font-size: 18px;
@@ -11,5 +16,5 @@
   text-align: center;
   border-radius: 100px;
   padding: 14px 24px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }

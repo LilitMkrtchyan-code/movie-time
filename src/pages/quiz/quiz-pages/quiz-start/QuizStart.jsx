@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { apiQuiz } from "../../../../api/api-quiz";
 import { QuizContext } from "../../context/quiz-context";
 import { Preloader } from "../../../../components/ui/preloader/Preloader";
-import { QuizTitle } from "../../components/quiz-title/QuizTitle";
+import { PageTitle } from "../../../../components/ui/page-title/PageTitle";
 import { Button } from "../../../../components/ui/button/Button";
+import { Error } from "../../components/error/Error";
 import "./QuizStart.css";
 
 export const QuizStart = () => {
@@ -42,13 +43,19 @@ export const QuizStart = () => {
         <Preloader />
       ) : (
         <>
-          <QuizTitle title="Welcome to Movie Quiz!" />
-          <h3 className="quiz-start__subtitle">
-            {questions?.length} questions to test your knowledge of movies
-          </h3>
-          <Button className="quiz-start__btn" onClick={handleStartQuiz}>
-            Start Quiz
-          </Button>
+          <PageTitle text="Welcome to Movie Quiz!" className="quiz-title" />
+          {status === "error" ? (
+            <Error />
+          ) : (
+            <>
+              <h3 className="quiz-start__subtitle">
+                {questions?.length} questions to test your knowledge of movies
+              </h3>
+              <Button className="quiz-start__btn" onClick={handleStartQuiz}>
+                Start Quiz
+              </Button>
+            </>
+          )}
         </>
       )}
     </div>

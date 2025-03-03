@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useFavorites } from "../../contexts/favorites-context";
 import { MovieCard } from "../../components/movies/movieCard/MovieCard";
-import { PageTitle } from "../../components/movies/page-title/PageTitle";
+import { PageTitle } from "../../components/ui/page-title/PageTitle";
 import "./Favorites.css";
 
 export const Favorites = () => {

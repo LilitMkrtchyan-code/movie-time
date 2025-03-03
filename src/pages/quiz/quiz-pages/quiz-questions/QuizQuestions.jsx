@@ -3,7 +3,7 @@ import { QuizContext } from "../../context/quiz-context";
 import { Error } from "../../components/error/Error";
 import { Progress } from "../../components/progress/Progress";
 import { Question } from "../../components/question/Question";
-import { QuizTitle } from "../../components/quiz-title/QuizTitle";
+import { PageTitle } from "../../../../components/ui/page-title/PageTitle";
 import { QuizFooter } from "../../components/quiz-footer/QuizFooter";
 import "./QuizQuestions.css";
 
@@ -16,7 +16,10 @@ export const QuizQuestions = () => {
 
   return (
     <div className="quiz-questions">
-      <QuizTitle title="Quiz Questions" className="quiz-questions__title" />
+      <PageTitle
+        text="Quiz Questions"
+        className="quiz-title quiz-questions__title"
+      />
       {status === "error" && <Error />}
       {status === "active" && (
         <>

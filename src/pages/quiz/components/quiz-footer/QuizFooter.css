@@ -7,8 +7,8 @@
 
 .quiz-button,
 .quiz-footer__timer {
-  border: 2px solid #2f2942;
-  color: #fff;
+  border: 2px solid var(--violet-400);
+  color: var(--white-100);
   padding: 12px 30px;
   border-radius: 100px;
 }
@@ -18,5 +18,5 @@
 }
 
 .quiz-button:hover {
-  border: 2px solid #463f5f;
+  border: 2px solid var(--violet-300);
 }
