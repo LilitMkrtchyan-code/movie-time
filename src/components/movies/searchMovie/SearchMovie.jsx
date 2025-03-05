@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Button } from "../../ui/button/Button";
 import "./SearchMovie.css";
 
 export const SearchMovie = ({ searchQuery, searchMovies }) => {
@@ -48,9 +49,9 @@ export const SearchMovie = ({ searchQuery, searchMovies }) => {
             onChange={handleSearchChange}
             onKeyDown={handleKey}
           />
-          <button className="btn search-btn" onClick={handleSearchSubmit}>
+          <Button className="but search-btn" onClick={handleSearchSubmit}>
             Search
-          </button>
+          </Button>
         </div>
         <div>
           <label className="search-movie__label">

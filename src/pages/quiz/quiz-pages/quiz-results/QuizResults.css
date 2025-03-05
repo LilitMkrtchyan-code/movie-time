@@ -18,3 +18,25 @@
   padding: 14px 24px;
   margin-bottom: 16px;
 }
+
+@media screen and (max-width: 768px) {
+  .quiz-results .quiz-results__title {
+    margin: 40px 0 20px;
+  }
+  .quiz-results__text {
+    font-size: 16px;
+    padding: 12px 20px;
+    margin-bottom: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quiz-results .quiz-results__title {
+    margin: 30px 0 15px;
+  }
+  .quiz-results__text {
+    font-size: 14px;
+    padding: 10px 18px;
+    margin-bottom: 12px;
+  }
+}

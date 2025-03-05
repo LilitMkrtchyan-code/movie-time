@@ -29,9 +29,9 @@
 
 .card-movie .card-content .card-title {
   font-family: var(--ff-primary);
-  color: var(--blue-500) !important;
+  color: #160078 !important;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .card-content__year-type {
@@ -64,5 +64,5 @@
 .card-hover__content {
   display: flex;
   justify-content: flex-end;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }

@@ -66,7 +66,7 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
             <Icon
               className="fas fa-trash"
               onClick={handleFavoriteClick}
-              size={22}
+              size={25}
               color="#fff"
             />
           ) : (

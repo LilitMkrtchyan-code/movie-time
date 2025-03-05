@@ -38,10 +38,36 @@ progress::-webkit-progress-value {
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  color: #c8c8cb;
+  color: var(--text-default);
 }
 
 .progress-current {
-  color: #fff;
+  color: var(--white-100);
   font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .quiz-progress {
+    margin-bottom: 40px;
+    gap: 12px;
+  }
+  .progress-info {
+    font-size: 16px;
+  }
+  progress {
+    height: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quiz-progress {
+    margin-bottom: 30px;
+    gap: 10px;
+  }
+  .progress-info {
+    font-size: 14px;
+  }
+  progress {
+    height: 10px;
+  }
 }

@@ -4,7 +4,7 @@ import "./Preloader.css";
 function Preloader({
   size = "small",
   text = "loading",
-  textColor = "#d9d7e0",
+  textColor = "#fff",
   color = "#26a69a",
 }) {
   return (

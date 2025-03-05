@@ -59,8 +59,19 @@
 }
 
 @media (max-width: 400px) {
+  .about-movie__actions .bookmark {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .about-movie__actions .share {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
   .IMDb-img {
-    width: 60px;
+    width: 55px;
     height: 37px;
+  }
+  .action-link__text {
+    font-size: 15px;
   }
 }

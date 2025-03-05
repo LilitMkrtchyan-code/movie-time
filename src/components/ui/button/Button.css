@@ -6,6 +6,7 @@
   background-color: #2f2942;
   border: 1px solid #2f2942;
   border-radius: 12px;
+  letter-spacing: .5px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }

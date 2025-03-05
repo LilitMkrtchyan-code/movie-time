@@ -7,7 +7,7 @@
 }
 
 .about-movie__title {
-  color: #ffd575;
+  color: var(--color-second);
   font-size: 22px;
 }
 
@@ -23,12 +23,21 @@
   height: 390px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .about-movie__header {
     padding: 15px 0 15px;
+  }
+  .about-movie__title {
+    font-size: 20px;
   }
   .about-movie__content {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .about-movie__title {
+    font-size: 18px;
   }
 }

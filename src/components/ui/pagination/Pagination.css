@@ -4,15 +4,15 @@
 }
 
 .pagination {
-  background-color: transparent;
+  background-color: var(--violet-400);
   border-radius: 20px;
   padding: 4px 0;
   margin: 0;
-  box-shadow: 0 4px 6px #26a69a;
+  box-shadow: var(--box-shadow-primary);
 }
 
 .pagination li a {
-  color: #ffffff7a;
+  color: var(--grey-400);
 }
 
 .fa-chevron-left,
@@ -21,7 +21,7 @@
 }
 
 .pagination li.active {
-  background-color: #26a69a;
+  background-color: var(--color-primary);
 }
 
 @media (max-width: 992px) {
@@ -31,6 +31,15 @@
 }
 
 @media (max-width: 575px) {
+  .pagination {
+    padding: 2px 0;
+  }
+  .pagination li a {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 400px) {
   .pagination li a {
     padding: 0 6px;
   }

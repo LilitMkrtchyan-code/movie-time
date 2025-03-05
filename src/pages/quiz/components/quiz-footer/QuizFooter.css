@@ -20,3 +20,26 @@
 .quiz-button:hover {
   border: 2px solid var(--violet-300);
 }
+
+@media screen and (max-width: 768px) {
+  .quiz-button,
+  .quiz-footer__timer {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  .quiz-footer__timer {
+    padding: 10px 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quiz-button,
+  .quiz-footer__timer {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+
+  .quiz-footer__timer {
+    padding: 8px 20px;
+  }
+}

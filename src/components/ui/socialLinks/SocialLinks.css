@@ -9,9 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2f2942;
-  border: 1px solid #2f2942;
-  color: #fff;
+  background-color: var(--violet-400);
+  border: 1px solid var(--violet-400);
+  color: var(--white-100);
   padding: 5px;
   border-radius: 50%;
   width: 40px;
@@ -20,11 +20,39 @@
 }
 
 .social-icon:hover {
-  background-color: #463f5f;
-  border: 1px solid #463f5f;
+  background-color: var(--violet-300);
+  border: 1px solid var(--violet-300);
 }
 
 .icon {
   font-size: 16px;
-  color: #fff;
+  color: var(--white-100);
+}
+
+@media screen and (max-width: 768px) {
+  .social-links {
+    gap: 10px;
+  }
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    padding: 4px;
+  }
+  .icon {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .social-links {
+    gap: 8px;
+  }
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+  }
+  .icon {
+    font-size: 12px;
+  }
 }

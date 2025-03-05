@@ -25,12 +25,12 @@ export const MovieActions = ({ movie, isFavorite, onToggleFavorite }) => {
       >
         <Icon
           className={isFavorite ? "fas fa-bookmark" : "far fa-bookmark"}
-          size="17"
+          size="18"
           color="#fff"
         />
       </Button>
       <Button type="button" className="action-button share">
-        <Icon className="fas fa-share" size="17" color="#fff" />
+        <Icon className="fas fa-share" size="18" color="#fff" />
       </Button>
     </div>
   );

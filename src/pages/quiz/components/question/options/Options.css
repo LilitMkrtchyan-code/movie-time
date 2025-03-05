@@ -46,3 +46,23 @@
   border: 1px solid var(--violet-400);
   box-shadow: none;
 }
+
+@media screen and (max-width: 768px) {
+  .options {
+    gap: 15px; 
+  }
+  .option-btn {
+    font-size: 16px; 
+    padding: 12px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .options {
+    gap: 10px; 
+  }
+  .option-btn {
+    font-size: 14px; 
+    padding: 10px 18px; 
+  }
+}
