@@ -29,14 +29,14 @@
 
 .card-movie .card-content .card-title {
   font-family: var(--ff-primary);
-  color: #160078 !important;
+  color: #160952 !important;
   font-size: 18px;
   font-weight: 600;
 }
 
 .card-content__year-type {
   font-family: var(--ff-primary);
-  color: var(--dark-primary);
+  color: #000000;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 5px;
