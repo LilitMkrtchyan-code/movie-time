@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { Button } from "../../components/ui/button/Button";
+import { Link, NavLink } from "react-router-dom";
+// import { Button } from "../../components/ui/button/Button";
 import "./Header.css";
 import { useEffect } from "react";
 
@@ -23,14 +23,24 @@ export const Header = () => {
         <div className="header-section__nav">
           <ul className="nav-list">
             <li className="nav-item">
-              <Link to="/favorites" className="nav-link">
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
                 Favorites
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/quiz" className="nav-link">
+              <NavLink
+                to="/quiz"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
                 Quiz
-              </Link>
+              </NavLink>
             </li>
           </ul>
           {/* <Button className="header-section__login">
