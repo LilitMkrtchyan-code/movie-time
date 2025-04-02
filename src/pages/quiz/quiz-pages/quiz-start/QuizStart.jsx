@@ -40,7 +40,7 @@ export const QuizStart = () => {
   return (
     <div className="quiz-start">
       {status === "loading" ? (
-        <Preloader />
+        <Preloader size="small" />
       ) : (
         <>
           <PageTitle text="Welcome to Movie Quiz!" className="quiz-title" />

@@ -1,25 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useCallback, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useFavorites } from "../../contexts/favorites-context";
+import { omdbApi } from "../../api/api-movie";
 import { MovieDetailsList } from "./movieDetails-list/MovieDetailsList";
 import { MovieActions } from "./movie-actions/MovieActions";
-import { omdbApi } from "../../api/api-movie";
-import { useLocation } from "react-router-dom";
+import { Preloader } from "../../components/ui/preloader/Preloader";
 import { Rating } from "../../components/ui/rating/Rating";
 import { defaultPoster } from "../../utils/constants";
 import "./MovieDetails.css";
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
-  const [isFavorite, setIsFavorite] = useState(null);
 
   const location = useLocation();
-  const urlParams = new URLSearchParams(location.search);
-  const id = urlParams.get("movieId");
+  const id = new URLSearchParams(location.search).get("movieId");
+
+  const isFavorite = useMemo(
+    () => favoriteMovies.some((favorite) => favorite.imdbID === id),
+    [favoriteMovies, id]
+  );
+
+  const handleToggleFavorite = useCallback(() => {
+    isFavorite ? removeFavorite(id) : addFavorite(movie);
+  }, [isFavorite, movie, id, addFavorite, removeFavorite]);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchMovieDetails = async () => {
+      setIsLoading(true);
       try {
         const response = await omdbApi.fetchByID(id);
         if (response.success) {
@@ -29,40 +43,32 @@ export const MovieDetails = () => {
         }
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchMovieDetails();
   }, [id]);
 
-  useEffect(() => {
-    setIsFavorite(favoriteMovies.some((movie) => movie.imdbID === id));
-  }, [favoriteMovies, id]);
+  if (isLoading) {
+    return <Preloader size="small" />;
+  }
 
-  const handleToggleFavorite = () => {
-    console.log("Before toggle:", isFavorite);
-    if (isFavorite) {
-      removeFavorite(movie.imdbID);
-      setIsFavorite(false);
-    } else {
-      addFavorite(movie);
-      setIsFavorite(true);
-    }
-    console.log("After toggle:", isFavorite);
-  };
+  const { Title, Year, imdbRating, Poster } = movie;
 
   return (
     <section className="about-movie">
       <div className="about-movie__header">
         <h3 className="about-movie__title">
-          {movie.Title} ({movie.Year})
+          {Title} ({Year})
         </h3>
-        <Rating rating={movie.imdbRating} label="IMDb RATING" />
+        <Rating rating={imdbRating} label="IMDb RATING" />
       </div>
       <div className="about-movie__content">
         <div className="about-movie__poster">
           <img
-            src={movie.Poster === "N/A" ? defaultPoster : movie.Poster}
-            alt={movie.Title}
+            src={Poster === "N/A" ? defaultPoster : Poster}
+            alt={Title}
             className="about-movie__poster-img"
           />
         </div>

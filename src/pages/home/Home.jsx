@@ -48,7 +48,7 @@ export const Home = () => {
     <Fragment>
       <SearchMovie searchQuery={searchQuery} searchMovies={searchMovies} />
       {loading ? (
-        <Preloader size="medium" text="loading..." />
+        <Preloader size="small" />
       ) : (
         <MovieList movies={movies} error={error} />
       )}

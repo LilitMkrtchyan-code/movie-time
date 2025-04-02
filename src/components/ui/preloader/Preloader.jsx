@@ -1,15 +1,15 @@
-import { BlinkBlur } from "react-loading-indicators";
+import { Commet } from "react-loading-indicators";
 import "./Preloader.css";
 
 function Preloader({
-  size = "small",
-  text = "loading",
-  textColor = "#fff",
   color = "#26a69a",
+  size = "small",
+  text = "",
+  textColor = "",
 }) {
   return (
     <div className="preloader">
-      <BlinkBlur color={color} size={size} text={text} textColor={textColor} />
+      <Commet color={color} size={size} text={text} textColor={textColor} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ export const FavoritesProvider = ({ children }) => {
     const storedFavorites = Storage.getItem("favoriteMovies") || [];
     setFavoriteMovies(storedFavorites);
   }, []);
-
+ 
   const addFavorite = (movie) => {
     const updatedFavorites = [...favoriteMovies, movie];
     Storage.setItem("favoriteMovies", updatedFavorites);
