@@ -1,9 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
-// import { Button } from "../../components/ui/button/Button";
-import "./Header.css";
 import { useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Button } from "../../components/ui/button/Button";
+import "./Header.css";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = "Movie Time";
   }, []);
@@ -43,10 +45,13 @@ export const Header = () => {
               </NavLink>
             </li>
           </ul>
-          {/* <Button className="header-section__login">
+          <Button
+            className="header-section__login"
+            onClick={() => navigate("login")}
+          >
             <i className="far fa-user"></i>
             <span className="login-text"> Log In</span>
-          </Button> */}
+          </Button>
         </div>
       </div>
     </header>

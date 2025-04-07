@@ -15,7 +15,7 @@ export const Progress = () => {
           {questions?.length}
         </div>
         <div>
-          <span className="progress-current">{points}</span> /{" "}
+          Points <span className="progress-current">{points}</span> /{" "}
           {questions?.length * 10}
         </div>
       </div>

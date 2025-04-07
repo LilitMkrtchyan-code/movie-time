@@ -1,6 +1,6 @@
 .layout-container {
   width: 100%;
-  max-width: 1150px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 15px;
   min-height: 100vh;
@@ -25,6 +25,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

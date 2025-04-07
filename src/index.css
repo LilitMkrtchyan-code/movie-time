@@ -12,6 +12,8 @@
   --blue-500: #1f1066;
   --violet-300: #463f5f;
   --violet-400: #2f2942;
+  --crimson-200: #e12889;
+  --crimson-300: #b11a69;
   --box-shadow-primary: 0 4px 6px #26a69a;
 }
 
@@ -52,7 +54,7 @@ ul {
 
 .movies__notfound {
   text-align: center;
-  color: var(--white-100);
+  color: var(--text-default);
   font-size: 22px;
 }
 

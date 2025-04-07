@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { QuizContext } from "../../context/quiz-context";
-import { Error } from "../../components/error/Error";
+import { Error } from "../../../../components/ui/error/Error";
 import { Progress } from "../../components/progress/Progress";
 import { Question } from "../../components/question/Question";
 import { PageTitle } from "../../../../components/ui/page-title/PageTitle";

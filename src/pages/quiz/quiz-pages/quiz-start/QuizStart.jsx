@@ -5,7 +5,7 @@ import { QuizContext } from "../../context/quiz-context";
 import { Preloader } from "../../../../components/ui/preloader/Preloader";
 import { PageTitle } from "../../../../components/ui/page-title/PageTitle";
 import { Button } from "../../../../components/ui/button/Button";
-import { Error } from "../../components/error/Error";
+import { Error } from "../../../../components/ui/error/Error";
 import "./QuizStart.css";
 
 export const QuizStart = () => {
@@ -45,7 +45,7 @@ export const QuizStart = () => {
         <>
           <PageTitle text="Welcome to Movie Quiz!" className="quiz-title" />
           {status === "error" ? (
-            <Error />
+            <Error errMessage="There was an error loading questions." />
           ) : (
             <>
               <h3 className="quiz-start__subtitle">

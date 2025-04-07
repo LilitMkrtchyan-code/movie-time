@@ -17,31 +17,14 @@
   text-decoration: none;
 }
 
-/* .header-section__login {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 14px 9px 12px;
-} */
-
-/* .header-section__login:hover {
-  background-color: #3d3653;
-  border: 1px solid #3d3653;
-} */
-
-/* .login-text {
-  color: #fff;
-  margin-top: 2px;
-} */
-
-/* .fa-user {
-  font-size: 18px;
-} */
-
 .highlight {
   color: #2bbbad;
   font-size: 35px;
+}
+
+.highlight:hover,
+.highlight:focus {
+  color: var(--color-primary);
 }
 
 .header-section__nav {
@@ -60,22 +43,50 @@
 
 .nav-link {
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--text-default);
+  color: var(--grey-400);
   font-size: 16px;
   letter-spacing: 1px;
   transition: 0.2s ease-in-out;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: #fff;
 }
 
 .nav-link.active {
   color: var(--white-100);
-  background-color: var(--violet-400);
-  padding: 10px 20px;
-  /* text-decoration: underline;
-  text-underline-offset: 7px; */
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+.header-section__login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 9px 14px 9px 12px;
+}
+
+.header-section__login:focus {
+  background-color: var(--violet-300) !important;
+  box-shadow: 0 0 0 2px rgba(123, 97, 255, 0.3);
+}
+
+.header-section__login:hover {
+  background-color: var(--violet-300);
+  border: 1px solid var(--violet-300);
+}
+
+.login-text {
+  color: #fff;
+  margin-top: 1px;
+}
+
+.fa-user {
+  font-size: 18px;
 }
 
 @media screen and (max-width: 768px) {
@@ -83,12 +94,19 @@
     font-size: 24px;
     margin-bottom: 15px;
   }
+
+  .header-section__login,
   .nav-link {
     font-size: 14px;
+  }
+
+  .fa-user {
+    font-size: 16px;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .header-section__nav,
   .nav-list {
     display: flex;
     flex-direction: column;
@@ -99,7 +117,8 @@
   .logo-link {
     font-size: 22px;
   }
-  /* .header-section__login {
+
+  .header-section__login {
     padding: 9px;
-  } */
+  }
 }
