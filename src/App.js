@@ -12,33 +12,36 @@ import { MovieDetails } from "./pages/movie-details/MovieDetails";
 import { Login } from "./pages/auth/Login";
 import { Register } from "./pages/auth/Register";
 import { NotFound } from "./pages/notFound/NotFound";
+import { AuthProvider } from "./contexts/auth-context";
 
 function App() {
   return (
-    <FavoritesProvider>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route
-            path="quiz"
-            element={
-              <QuizProvider>
-                <Quiz />
-              </QuizProvider>
-            }
-          >
-            <Route index element={<QuizStart />} />
-            <Route path="questions" element={<QuizQuestions />} />
-            <Route path="results" element={<QuizResults />} />
+    <AuthProvider>
+      <FavoritesProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="favorites" element={<Favorites />} />
+            <Route
+              path="quiz"
+              element={
+                <QuizProvider>
+                  <Quiz />
+                </QuizProvider>
+              }
+            >
+              <Route index element={<QuizStart />} />
+              <Route path="questions" element={<QuizQuestions />} />
+              <Route path="results" element={<QuizResults />} />
+            </Route>
+            <Route path="movie-details" element={<MovieDetails />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="movie-details" element={<MovieDetails />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </FavoritesProvider>
+        </Routes>
+      </FavoritesProvider>
+    </AuthProvider>
   );
 }
 

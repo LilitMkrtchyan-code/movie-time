@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/auth-context";
 import { Button } from "../../components/ui/button/Button";
 import "./Header.css";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     document.title = "Movie Time";
@@ -12,6 +14,13 @@ export const Header = () => {
 
   const handleLogoClick = () => {
     document.title = "Movie Time";
+  };
+
+  const handleProtect = (event, path) => {
+    if (!isAuthenticated) {
+      event.preventDefault();
+      navigate("/login", { state: { from: path } }); 
+    }
   };
 
   return (
@@ -26,7 +35,18 @@ export const Header = () => {
           <ul className="nav-list">
             <li className="nav-item">
               <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
                 to="/favorites"
+                onClick={(event) => handleProtect(event, "/favorites")}
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }
@@ -37,6 +57,7 @@ export const Header = () => {
             <li className="nav-item">
               <NavLink
                 to="/quiz"
+                onClick={(event) => handleProtect(event, "/quiz")}
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }

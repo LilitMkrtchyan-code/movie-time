@@ -1,78 +1,71 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Storage } from "../../utils/storage";
 import { apiAuth } from "../../api/api-auth";
-
+import { useAuth } from "../../contexts/auth-context";
+import { validateEmail, validatePassword } from "../../utils/auth-utils";
 import { Button } from "../../components/ui/button/Button";
 import "./Auth.css";
 
 export const Login = () => {
-  const [logValues, setLogValues] = useState({
+  const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [loginError, setLoginError] = useState("");
+  const [serverError, setServerError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (event) => {
     const { id, value } = event.target;
-    setLogValues((prev) => ({ ...prev, [id]: value }));
+    setFormValues((prev) => ({ ...prev, [id]: value }));
 
     if (errors[id]) {
       setErrors((prev) => ({ ...prev, [id]: "" }));
     }
-    if (loginError) {
-      setLoginError("");
+    if (serverError) {
+      setServerError("");
     }
   };
 
   const validateForm = () => {
-    const newErrors = {};
-
-    if (!logValues.email.includes("@")) {
-      newErrors.email = "Please enter a valid email";
-    }
-    if (logValues.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
+    const newErrors = {
+      email: validateEmail(formValues.email),
+      password: validatePassword(formValues.password),
+    };
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return !Object.values(newErrors).some(Boolean);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setServerError("");
 
     if (!validateForm()) return;
-    setIsSubmitting(true);
-    setLoginError("");
-    try {
-      const response = await apiAuth.login({
-        email: logValues.email,
-        password: logValues.password,
-      });
-      if (response?.accessToken) {
-        console.log(response);
 
-        Storage.setItem("token", response.accessToken);
-        Storage.setItem("user", response.user);
+    setIsLoading(true);
+
+    try {
+      const response = await apiAuth.login(formValues);
+      if (response?.accessToken) {
+        login(response.accessToken, response.user);
         navigate("/");
       } else {
-        setLoginError("Invalid email or password");
+        setServerError("Invalid email or password");
       }
     } catch (error) {
-      setLoginError(error.message || "Login failed. Please try again.");
+      setServerError(error.message || "Login failed. Please try again.");
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="auth-page login">
       <form className="auth-form" action="#" onSubmit={handleSubmit}>
-        {loginError && <div className="auth-form__error">{loginError}</div>}
+        {serverError && <div className="auth-form__error">{serverError}</div>}
         <div className="auth-form__field">
           <label htmlFor="email" className="auth-form__label">
             Email
@@ -81,7 +74,7 @@ export const Login = () => {
             className={`auth-form__input ${errors.email ? "input-error" : ""}`}
             type="email"
             id="email"
-            value={logValues.email}
+            value={formValues.email}
             onChange={handleChange}
             placeholder="Email"
             required
@@ -98,7 +91,7 @@ export const Login = () => {
             }`}
             type="password"
             id="password"
-            value={logValues.password}
+            value={formValues.password}
             onChange={handleChange}
             placeholder="Password"
             minLength={6}
@@ -112,9 +105,9 @@ export const Login = () => {
           <Button
             className="auth-form__button"
             type="submit"
-            disabled={isSubmitting}
+            disabled={isLoading}
           >
-            {isSubmitting ? "Logging in..." : "Log In"}
+            {isLoading ? "Logging in..." : "Log In"}
           </Button>
         </div>
         <div className="auth-form__footer">
