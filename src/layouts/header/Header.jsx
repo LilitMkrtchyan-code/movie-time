@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { Button } from "../../components/ui/button/Button";
 import "./Header.css";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, user, logout } = useAuth();
-
+  const location = useLocation();
+  const { isAuthenticated, logout } = useAuth();
+  
   useEffect(() => {
     document.title = "Movie Time";
   }, []);
@@ -28,7 +29,7 @@ export const Header = () => {
       logout();
       navigate("/");
     } else {
-      navigate("/login");
+      navigate("/login", { state: { from: location.pathname } }); 
     }
   };
 
