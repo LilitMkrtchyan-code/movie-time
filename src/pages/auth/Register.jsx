@@ -1,56 +1,49 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../components/ui/button/Button";
 import { apiAuth } from "../../api/api-auth";
+import { Button } from "../../components/ui/button/Button";
+import {
+  validateEmail,
+  validatePassword,
+  validateName,
+} from "../../utils/auth-utils";
 import "./Auth.css";
 
 export const Register = () => {
-  const [regValues, setRegValues] = useState({
+  const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
-    userName: "",
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { id, value } = event.target;
 
-    setRegValues((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
+    setFormValues((prev) => ({ ...prev, [id]: value }));
+
     if (errors[id]) {
       setErrors((prev) => ({ ...prev, [id]: "" }));
+    }
+    if (serverError) {
+      setServerError("");
     }
   };
 
   const validate = () => {
-    const newErrors = {};
-
-    if (!regValues.firstName.trim()) {
-      newErrors.firstName = "Enter your name";
-    }
-
-    if (!regValues.lastName.trim()) {
-      newErrors.lastName = "Enter your last name";
-    }
-    if (regValues.userName.trim().length < 3) {
-      newErrors.userName = "Username must be at least 3 characters";
-    }
-    if (!regValues.email.includes("@")) {
-      newErrors.email = "Enter your email";
-    }
-    if (regValues.password.length < 6) {
-      newErrors.password = "Passwords must be at least 6 characters.";
-    }
+    const newErrors = {
+      firstName: validateName(formValues.firstName.trim(), "first name"),
+      lastName: validateName(formValues.lastName.trim(), "last name"),
+      email: validateEmail(formValues.email),
+      password: validatePassword(formValues.password),
+    };
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return !Object.values(newErrors).some(Boolean);
   };
 
   const handleSubmit = async (event) => {
@@ -59,17 +52,10 @@ export const Register = () => {
 
     if (!validate()) return;
 
-    setIsSubmitting(true);
+    setIsLoading(true);
 
     try {
-      const newUser = {
-        firstName: regValues.firstName,
-        lastName: regValues.lastName,
-        userName: regValues.userName,
-        email: regValues.email,
-        password: regValues.password,
-      };
-      const response = await apiAuth.register(newUser);
+      const response = await apiAuth.register(formValues);
 
       if (response?.id) {
         console.log("User registered successfully!");
@@ -80,7 +66,7 @@ export const Register = () => {
     } catch (error) {
       setServerError(error.message || "Registration failed. Please try again.");
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
@@ -98,7 +84,7 @@ export const Register = () => {
             }`}
             type="text"
             id="firstName"
-            value={regValues.firstName}
+            value={formValues.firstName}
             onChange={handleChange}
             placeholder="First name"
           />
@@ -116,31 +102,12 @@ export const Register = () => {
             }`}
             type="text"
             id="lastName"
-            value={regValues.lastName}
+            value={formValues.lastName}
             onChange={handleChange}
             placeholder="Last name"
           />
           {errors.lastName && (
             <span className="field-error">{errors.lastName}</span>
-          )}
-        </div>
-        <div className="auth-form__field">
-          <label htmlFor="userName" className="auth-form__label">
-            User name
-          </label>
-          <input
-            className={`auth-form__input ${
-              errors.userName ? "input-error" : ""
-            }`}
-            type="text"
-            id="userName"
-            value={regValues.userName}
-            onChange={handleChange}
-            minLength={3}
-            placeholder="at least 3 characters."
-          />
-          {errors.userName && (
-            <span className="field-error">{errors.userName}</span>
           )}
         </div>
         <div className="auth-form__field">
@@ -151,7 +118,7 @@ export const Register = () => {
             className={`auth-form__input ${errors.email ? "input-error" : ""}`}
             type="email"
             id="email"
-            value={regValues.email}
+            value={formValues.email}
             onChange={handleChange}
             placeholder="email"
           />
@@ -167,7 +134,7 @@ export const Register = () => {
             }`}
             type="password"
             id="password"
-            value={regValues.password}
+            value={formValues.password}
             onChange={handleChange}
             placeholder="at least 6 characters."
             minLength={6}
@@ -180,9 +147,9 @@ export const Register = () => {
           <Button
             className="auth-form__button"
             type="submit"
-            disabled={isSubmitting}
+            disabled={isLoading}
           >
-            {isSubmitting ? "Creating account..." : "Create account"}
+            {isLoading ? "Creating account..." : "Create account"}
           </Button>
         </div>
         <div className="auth-form__footer">
