@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { QuizContext } from "../../context/quiz-context";
+import { QuizContext } from "../../../../contexts/quiz-context";
 import { Button } from "../../../../components/ui/button/Button";
 import "./QuizFooter.css";
 

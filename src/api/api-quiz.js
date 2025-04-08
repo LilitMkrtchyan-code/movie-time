@@ -4,7 +4,7 @@ class ApiQuiz {
   }
   async getQuestions() {
     try {
-      const response = await fetch(`${this.baseUrl}/quiz?limit=15`);
+      const response = await fetch(`${this.baseUrl}/quiz?limit10`);
       const data = await response.json();
       return {
         success: response.status === 200,

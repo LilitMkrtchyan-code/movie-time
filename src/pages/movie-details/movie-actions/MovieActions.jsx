@@ -1,10 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/auth-context";
 import IMDbImg from "../../../assets/images/imdb.png";
 import { Icon } from "../../../components/ui/icon/Icon";
 import { Button } from "../../../components/ui/button/Button";
 import "./MovieActions.css";
 
 export const MovieActions = ({ movie, isFavorite, onToggleFavorite }) => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleFavoriteClick = (event) => {
+    event.preventDefault();
+    if (!isAuthenticated) {
+      navigate("/login", { state: { from: window.location.pathname } });
+      return;
+    }
+    onToggleFavorite();
+  };
+
   return (
     <div className="about-movie__actions">
       <Link
@@ -21,7 +34,7 @@ export const MovieActions = ({ movie, isFavorite, onToggleFavorite }) => {
       <Button
         type="button"
         className={`action-button bookmark ${isFavorite ? "favorite" : ""}`}
-        onClick={onToggleFavorite}
+        onClick={handleFavoriteClick}
       >
         <Icon
           className={isFavorite ? "fas fa-bookmark" : "far fa-bookmark"}

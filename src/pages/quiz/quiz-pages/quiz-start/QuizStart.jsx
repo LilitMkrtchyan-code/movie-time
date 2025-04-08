@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiQuiz } from "../../../../api/api-quiz";
-import { QuizContext } from "../../context/quiz-context";
+import { QuizContext } from "../../../../contexts/quiz-context";
 import { Preloader } from "../../../../components/ui/preloader/Preloader";
 import { PageTitle } from "../../../../components/ui/page-title/PageTitle";
 import { Button } from "../../../../components/ui/button/Button";

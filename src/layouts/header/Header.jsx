@@ -6,7 +6,7 @@ import "./Header.css";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
 
   useEffect(() => {
     document.title = "Movie Time";
@@ -19,7 +19,16 @@ export const Header = () => {
   const handleProtect = (event, path) => {
     if (!isAuthenticated) {
       event.preventDefault();
-      navigate("/login", { state: { from: path } }); 
+      navigate("/login", { state: { from: path } });
+    }
+  };
+
+  const handleLogOutClick = () => {
+    if (isAuthenticated) {
+      logout();
+      navigate("/");
+    } else {
+      navigate("/login");
     }
   };
 
@@ -68,10 +77,18 @@ export const Header = () => {
           </ul>
           <Button
             className="header-section__login"
-            onClick={() => navigate("login")}
+            onClick={
+              isAuthenticated ? handleLogOutClick : () => navigate("login")
+            }
           >
-            <i className="far fa-user"></i>
-            <span className="login-text"> Log In</span>
+            <i
+              className={`fa ${
+                isAuthenticated ? "fa-sign-out-alt" : "fa-user"
+              }`}
+            ></i>
+            <span className="login-text">
+              {isAuthenticated ? "Log out" : "Log In"}
+            </span>
           </Button>
         </div>
       </div>

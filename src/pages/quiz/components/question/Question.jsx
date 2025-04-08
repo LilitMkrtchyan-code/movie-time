@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { QuizContext } from "../../context/quiz-context";
-import { Preloader } from "../../../../components/ui/preloader/Preloader";
+import { QuizContext } from "../../../../contexts/quiz-context";
 import { Options } from "./options/Options";
 import "./Question.css";
 

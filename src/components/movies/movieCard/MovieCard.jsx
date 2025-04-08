@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useFavorites } from "../../../contexts/favorites-context";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/auth-context";
 import { Icon } from "../../ui/icon/Icon";
 import { defaultPoster } from "../../../utils/constants";
 import "./MovieCard.css";
@@ -17,6 +18,7 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
   const { favoriteMovies, addFavorite, removeFavorite } = useFavorites();
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     setIsFavorite(favoriteMovies.some((favorite) => favorite.imdbID === id));
@@ -24,6 +26,12 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
 
   const handleFavoriteClick = (event) => {
     event.stopPropagation();
+
+    if (!isAuthenticated) {
+      navigate("/login", { state: { from: window.location.pathname } });
+      return;
+    }
+
     if (isFavorite) {
       removeFavorite(id);
     } else {
@@ -66,20 +74,20 @@ export const MovieCard = ({ movie = {}, inFavoritesPage = false }) => {
             <Icon
               className="fas fa-trash"
               onClick={handleFavoriteClick}
-              size={25}
+              size={27}
               color="#fff"
             />
           ) : (
             <Icon
               className={!isFavorite ? "far fa-bookmark" : "fas fa-bookmark"}
               onClick={handleFavoriteClick}
-              size={25}
+              size={28}
               color="#fff"
             />
           )}
         </div>
         <div className="card-hover__content">
-          <Icon className="fas fa-share" size={25} />
+          <Icon className="fas fa-share" size={28} />
         </div>
       </div>
     </div>

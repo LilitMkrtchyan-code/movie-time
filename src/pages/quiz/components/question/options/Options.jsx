@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { QuizContext } from "../../../context/quiz-context";
+import { QuizContext } from "../../../../../contexts/quiz-context";
 import { Button } from "../../../../../components/ui/button/Button";
 import "./Options.css";
 

@@ -33,7 +33,7 @@ const reducerQuiz = (state, action) => {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * 20,
+        secondsRemaining: state.questions.length * 30,
       };
     case "NEW_ANSWER":
       const question = state.questions[state.index];

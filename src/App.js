@@ -4,7 +4,7 @@ import { Layout } from "./layouts/Layout";
 import { Home } from "./pages/home/Home";
 import { Favorites } from "./pages/favorites/Favorites";
 import { Quiz } from "./pages/quiz/Quiz";
-import { QuizProvider } from "./pages/quiz/context/quiz-context";
+import { QuizProvider } from "./contexts/quiz-context";
 import { QuizStart } from "./pages/quiz/quiz-pages/quiz-start/QuizStart";
 import { QuizQuestions } from "./pages/quiz/quiz-pages/quiz-questions/QuizQuestions";
 import { QuizResults } from "./pages/quiz/quiz-pages/quiz-results/QuizResults";
