@@ -1,8 +1,11 @@
 .auth-page.register,
 .auth-page.login {
-  margin-top: 10px;
   display: flex;
   justify-content: center;
+}
+
+.auth-page.register {
+  margin-top: 40px;
 }
 
 .auth-page.login {

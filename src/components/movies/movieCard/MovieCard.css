@@ -12,7 +12,7 @@
 }
 
 .card-movie:hover {
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 .card-movie .card-image .activator {
